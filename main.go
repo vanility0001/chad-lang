@@ -4,10 +4,18 @@ import (
 	"fmt"
 	"io/ioutil"
 	"strings"
+
+	"github.com/alexflint/go-arg"
 )
 
 func main() {
-	file, _ := ioutil.ReadFile("index.chad")
+	var args struct {
+		File string
+	}
+
+	arg.MustParse(&args)
+
+	file, _ := ioutil.ReadFile(args.File)
 	result := parse(string(file))
 
 	fmt.Println(len(result))
