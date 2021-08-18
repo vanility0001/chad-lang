@@ -8,11 +8,11 @@ import (
 	"github.com/alexflint/go-arg"
 )
 
-func main() {
-	var args struct {
-		File string
-	}
+type args struct {
+	File string
+}
 
+func main() {
 	arg.MustParse(&args)
 
 	file, _ := ioutil.ReadFile(args.File)
